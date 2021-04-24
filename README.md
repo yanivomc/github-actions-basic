@@ -187,3 +187,101 @@ jobs:
 
 
 ~~~~
+
+
+####STEPS
+
+Under each job there is a keyword called steps - steps contains list of step
+
+In here we will simply understand that in a single step block
+
+As steps are list, if one fails, the next steps are skipped. There are ways to trigger it to.
+
+#####name of the step
+~~~~
+name: name of the step
+id: sample_id # needed if this step has output to be used in other steps
+run: echo 'Hello World' # command we want to run
+~~~~
+
+#####why GitHub Actions are so powerful?
+because it has a action marketplace that will let you 
+use other's actions and publish yours
+~~~~
+name: checkout code at current push
+uses: actions/checkout@v1
+~~~~
+
+in the above the  actions is the username, checkout is the repo name v1 is the tag
+
+we can use branch name, sha or tag after @
+but always safe to use tag as it is static
+
+
+sometimes some action might take input from outside to act on
+
+we can pass this using with keywords
+~~~
+name: Running simple steps
+uses: actions/hello-world-javascript-action@master
+with:
+  who-to-greet: 'Mona the Octocat'
+~~~  
+  
+Other than using public actions you can also use your own actions that lives in your repo
+name: Local Action
+~~~~
+uses: ./.github/actions/hello
+~~~~
+for this to succeed make sure you have a file named action.yaml in our repo
+~~~
+./.github/actions/hello/action.yaml
+~~~
+
+
+
+
+#####Running docker container in your steps?
+simply use the follwoing
+~~~
+name: Running docker container
+uses: docker://python:3
+~~~
+this will bootup a python:3 docker container
+
+
+we can have env variables scoped to our steps only
+~~~
+name: Env Variable Steps
+run: echo $HELLO_WORLD
+env:
+  HELLO_WORLD: hello-world # will not be available to other steps
+~~~
+
+sometimes we might want to run a step when a job fails
+~~~
+name: Run only in case of Failure
+run: echo the workflow failed
+if: ${{ failed() }} # possible values are failed(), always(), success()
+~~~
+
+
+we can also you  run a steps based on event type and branches too
+~~~
+name: Run only when push to master
+run: echo the code is pushed to master branch
+if: ${{ github.event_name == 'push' && github.ref == 'master' }}
+~~~
+
+
+A job might also have output that we can use in subsequent steps too
+let's assume we have a step with id:
+~~~~
+name: Print Previous Step Output
+run: echo ${{steps.second_step.outputs.time}}
+~~~~
+
+
+
+## Building a simple step
+Check our sample workflow: <https://github.com/yanivomc/github-actions-basic/blob/main/README.md>
