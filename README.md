@@ -16,7 +16,7 @@ will be triggered on push and create pull_request
 on: [push, pull_request] 
 ~~~~
 
-####We can also have some configuration like this
+#### We can also have some configuration like this
 ~~~~
 on:
   push: # will be triggered for any push
@@ -27,7 +27,7 @@ on:
   issue_comment:
     types: [deleted] # will be triggered when a comment in a issue is deleted
 ~~~~    
-####We can trigger any workflow using schedule too
+#### We can trigger any workflow using schedule too
 ~~~~
 on:
   schedule: 0 12 * * * # this will be triggered on 12pm (UTC) each day 
