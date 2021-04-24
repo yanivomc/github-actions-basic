@@ -284,4 +284,4 @@ run: echo ${{steps.second_step.outputs.time}}
 
 
 ## Building a simple step
-Check our sample workflow: <https://github.com/yanivomc/github-actions-basic/blob/main/README.md>
+Check our sample workflow: <https://github.com/yanivomc/github-actions-basic/blob/main/.github/workflows/sample-workflow.yaml>
