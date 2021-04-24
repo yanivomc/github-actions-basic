@@ -16,7 +16,7 @@ will be triggered on push and create pull_request
 on: [push, pull_request] 
 ~~~~
 
-#####We can also have some configuration like this
+####We can also have some configuration like this
 ~~~~
 on:
   push: # will be triggered for any push
@@ -49,7 +49,7 @@ on:
      - master
 ~~~~
 
-###### we can also ignore branches and tags too by simply using branches-ignore instead of branches
+#### we can also ignore branches and tags too by simply using branches-ignore instead of branches
 same goes for tags-ignore in place of tags
 we can not use branches-ignore and branches together and same of tags
 ~~~~
@@ -82,7 +82,7 @@ We might want to hide sensitive information in logs like password - For this use
 
 we can set secrets under Variables in each repository settings:
 
-#####Repo --> Settings --> Variables
+####Repo --> Settings --> Variables
 once we set it up in our repo,
 we can address it as followed:
 
@@ -197,14 +197,14 @@ In here we will simply understand that in a single step block
 
 As steps are list, if one fails, the next steps are skipped. There are ways to trigger it to.
 
-#####name of the step
+####name of the step
 ~~~~
 name: name of the step
 id: sample_id # needed if this step has output to be used in other steps
 run: echo 'Hello World' # command we want to run
 ~~~~
 
-#####why GitHub Actions are so powerful?
+####why GitHub Actions are so powerful?
 because it has a action marketplace that will let you 
 use other's actions and publish yours
 ~~~~
@@ -241,7 +241,7 @@ for this to succeed make sure you have a file named action.yaml in our repo
 
 
 
-#####Running docker container in your steps?
+####Running docker container in your steps?
 simply use the follwoing
 ~~~
 name: Running docker container
